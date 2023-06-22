@@ -5,7 +5,7 @@ from posts.models import Comment, Follow, Group, Post, User
 
 
 class PostSerializer(serializers.ModelSerializer):
-    '''Сериализатор постов. '''
+    """Сериализатор постов."""
     author = serializers.SlugRelatedField(
         slug_field='username',
         read_only=True,
@@ -20,7 +20,7 @@ class PostSerializer(serializers.ModelSerializer):
 
 
 class CommentSerializer(serializers.ModelSerializer):
-    '''Сериализатор комментариев. '''
+    """Сериализатор комментариев."""
     author = serializers.SlugRelatedField(
         read_only=True,
         slug_field='username'
@@ -41,20 +41,21 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class GroupSerializer(serializers.ModelSerializer):
-    '''Сериализатор групп. '''
+    """Сериализатор групп."""
     class Meta:
         model = Group
         fields = ('id', 'title', 'slug', 'description')
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Сериализатор для модели User."""
     class Meta:
         model = User
         fields = ('id', 'username', 'password')
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    '''Сериализатор подписок. '''
+    """Сериализатор подписок."""
     user = serializers.SlugRelatedField(
         slug_field='username',
         read_only=True,

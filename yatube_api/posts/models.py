@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class Group(models.Model):
-    '''Модель создания групп постов.'''
+    """Модель создания групп постов."""
     title = models.CharField(
         max_length=200,
         verbose_name='Название группы',
@@ -77,7 +77,7 @@ class Post(models.Model):
 
 
 class Follow(models.Model):
-    '''Модель создания подписок пользователей.'''
+    """Модель создания подписок пользователей."""
     user = models.ForeignKey(
         User,
         related_name='follower',

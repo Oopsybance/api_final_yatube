@@ -17,12 +17,14 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """Список групп."""
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (permissions.AllowAny,)
 
 
-class FollowViewSet(mixins.CreateModelMixin,
-                    mixins.ListModelMixin,
-                    viewsets.GenericViewSet):
+class FollowViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
+):
     """Список подписок."""
     serializer_class = FollowSerializer
     permission_classes = (permissions.IsAuthenticated,)
