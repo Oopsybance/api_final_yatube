@@ -42,8 +42,10 @@ class PostViewSet(viewsets.ModelViewSet):
     """Список постов."""
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = (IsAuthorOrReadOnly,
-                          permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (
+        IsAuthorOrReadOnly,
+        permissions.IsAuthenticatedOrReadOnly,
+    )
     pagination_class = LimitOffsetPagination
 
     def perform_create(self, serializer):
@@ -53,8 +55,10 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     """Список комментариев."""
     serializer_class = CommentSerializer
-    permission_classes = (IsAuthorOrReadOnly,
-                          permissions.IsAuthenticatedOrReadOnly,)
+    permission_classes = (
+        IsAuthorOrReadOnly,
+        permissions.IsAuthenticatedOrReadOnly,
+    )
 
     def get_post(self):
         if not hasattr(self, '_post'):
